@@ -1,0 +1,27 @@
+{
+  "name": "cypress-automation-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "e2e.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:run": "cypress run",
+    "delete-mochawesome-folder": "rm -f mochawesome-report/*.json",
+    "e2e_mochawesome": "yarn cypress run --spec cypress/integration/Tests/*.js",
+    "merge-json": "npx mochawesome-merge --reportDir mochawesome-report > mochawesome.json",
+    "html-generator": " npx mochawesome-report-generator mochawesome.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress-mochawesome-reporter": "^3.4.0",
+    "fileupload": "^1.0.0"
+  },
+  "devDependencies": {
+    "cypress": "^12.10.0",
+    "cypress-file-upload": "^5.0.8",
+    "cypress-multi-reporters": "^1.6.3",
+    "cypress-xpath": "^2.0.1",
+    "mocha": "^10.2.0"
+  }
+}
