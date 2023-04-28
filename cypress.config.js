@@ -1,7 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  projectId: 'uuxb4o',
+  projectId: '58s581',
   e2e: {
     hideXHRInCommandLog: true,////////THIS IS FOR REMOVING XHR Requests
     setupNodeEvents(on, config) {
@@ -19,7 +19,7 @@ module.exports = defineConfig({
     // retries :  2, // stavili smo retries i za cypress openn i za cypress rub
 
     //takodje ovde mozemo menjati PageLoadout, folder SS, folder VIdea itd
-    baseUrl : "http://www.webdriveruniversity.com/index.html", // ovde mozemo ukucati base url (za pristpuanje mozemo korstiti Cypress.config('baseUrl'))
+    // baseUrl : "http://www.webdriveruniversity.com/index.html", // ovde mozemo ukucati base url (za pristpuanje mozemo korstiti Cypress.config('baseUrl'))
     chromeWebSecurity: false,
 
     
