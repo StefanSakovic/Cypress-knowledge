@@ -8,7 +8,7 @@ SHOULD
 EXPECT I
 ASSERT
 
-RAZLIKU izmedju expect i should [NAPISI DODATNO KAKO]
+
 
 *Takodje kao tvrdnju nekada mozemo koristiti contains()..Kada ne mozemo naci element ili njegov tekst unutar vise elemnata
 sto je objasnjeno u foldery webdriver-uni/contains().cy.js

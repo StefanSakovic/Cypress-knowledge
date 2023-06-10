@@ -1,3 +1,5 @@
+//In cypress we have the possibility to create more configuration folders as you can see in the model below.
+
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
@@ -13,11 +15,14 @@ module.exports = defineConfig({
 
 });
 
-/*Komanda za pokretanje svojeg config fila je:
-npx cypress open --config-file cypress/config/development.config.js */
+/*We use terminal command for applying our configuration:
+npx cypress open --config-file cypress/config/development.config.js 
 
+When we open our tool(Cypress dashboard) we can see the changes of our config(settings)
+(cypress.config.js) 
 
-//kada nam otvori cypress tool mozemo videti promene i razliku u odnosu na difoltni
-//cypress.config.js 
+U can easly check this with Cypress.env(because they are not the same in different configs) like :
 
-//Takodje mozemo i koristiti Cypress.env("first_name") kako bi proverili da je Stefan a ne Milos kao u cypress.config.js
+Cypress.env("first_name")
+
+*/

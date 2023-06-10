@@ -13,6 +13,6 @@ describe("Iterate over elements", () => {
 
 
     cy.selectProduct('Curls to straight Shampoo')
-    //call from commands/js Cypress add
+    //call from support/commands/js Cypress add
   });
 });
