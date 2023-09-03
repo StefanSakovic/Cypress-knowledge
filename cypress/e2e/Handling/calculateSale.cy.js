@@ -3,8 +3,6 @@ describe("Test Conntact US form via automationteststore", () => {
     it("Calculate all non-Sale and Sale products", () => {
         cy.visit("https://automationteststore.com/");
 
-
-
         cy.get('.fixed_wrapper')
             .find('.prdocutname')
             .then(el => {
@@ -20,11 +18,6 @@ describe("Test Conntact US form via automationteststore", () => {
                     const nonSaleElements = AllElementsLength - SaleLength;
                     cy.log(`Produkta koji nisu na popustu ima tacno ${nonSaleElements}`)
                 });
-
-
             });
-
-
     });
-
 });

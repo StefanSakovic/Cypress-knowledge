@@ -11,38 +11,38 @@ describe("Handling data-tables on webdriver-uni", () => {
 
         cy.get('#thumbnail-1').find('tr>td').each((el, index) => {
             // cy.log(index)
-            userDetails[index] = el.text()//userdetails od [0] bice dzon//pa user od 1 bice Smith to radimo sa each
-            // i tako smo napunili userdetails sa tekstovima od td, svaki je dobio svoj index
-            cy.log(userDetails[index])
+            userDetails[index] = el.text();//userdetails of [0] will be dzon//so user of 1 will be Smith we do that with each
+            //and so we filled userdetails with texts from td, each got its own index
+            cy.log(userDetails[index]);
 
         }).then(() => {
-            for (let i = 0; i < userDetails.length; i++) {// pa smo zatim prosli kroz ceo array userDetails 
-                //da bi mogli forpetljom naci samo one koji su broj
+            for (let i = 0; i < userDetails.length; i++) {//so we then went through the entire userDetails array
+                //in order to be able to find only those that are numbers
 
-                //sada je array pun stringova pa cak i stringova brojeva pa number te brojeve pod stringom pretvara u broj tipa number                                                  
+                //ow the array is full of strings and even strings of numbers, so number converts those numbers under the string into a number of type number                                  
                 if (Number(userDetails[i]))
 
                     numb += Number(userDetails[i])
-            }
-            cy.log(numb)
-            expect(numb).to.eq(322)
-        })
-    })
+            };
+            cy.log(numb);
+            expect(numb).to.eq(322);
+        });
+    });
 
     it.only("Calculate and assert the age of a given user based on last name", () => {
 
         cy.get('#thumbnail-1').find('tr>td:nth-child(2)').each((el, index) => {
+            const text = el.text();
+            cy.log(text);
 
-            const text = el.text()
-            cy.log(text)
             if (text === "Woods") {
                 cy.get('#thumbnail-1').find('tr>td:nth-child(2)').eq(index).next().then(el => {
 
-                    const age = el.text()
-                    expect(age).to.be.eq('80')
+                    const age = el.text();
+                    expect(age).to.be.eq('80');
 
-                })
-            }
-        })
-    })
-})  
+                });
+            };
+        });
+    });
+});

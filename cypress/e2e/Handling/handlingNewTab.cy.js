@@ -5,9 +5,9 @@ describe("Testing tabs on web-driver-uni", () => {
 
         cy.visit('http://www.webdriveruniversity.com');
         cy.get('#contact-us').invoke('removeAttr', 'target').click();
-        
-// koriscenje invoke-a za new tab
 
-    })
+        // we use  invoke() for new tab
+
+    });
 });
 

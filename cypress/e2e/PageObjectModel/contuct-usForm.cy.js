@@ -1,14 +1,9 @@
-// import HomePage from './homepageClass';
-
 import HomePage from "./home-page_OP.js";
-import Login_Form from "./contuct-us_OP.js"
-
-//  <reference types="cypress" />
+import Login_Form from "./contuct-us_OP.js";
 
 describe("Test Contact Us form via WebdriverUni", () => {
   const home_page = new HomePage();
   const login_form = new Login_Form();
-
 
   before(function () {
     cy.fixture("example").then(function (data) {
@@ -43,10 +38,9 @@ describe("Test Contact Us form via WebdriverUni", () => {
     // );
 
     //II example
-    
+
     login_form.contuctUsLogin(Cypress.env("first_name"), data.last_name, data.email,
-    "How can I learn Cypress?", "h1", "Thank You for your Message!")
-    
+      "How can I learn Cypress?", "h1", "Thank You for your Message!");
   });
 
   it("Should not be able to submit a successful submission via contact us form as all fields are required", () => {
@@ -55,8 +49,7 @@ describe("Test Contact Us form via WebdriverUni", () => {
     // cy.get('textarea.feedback-input').type("How can I learn Cypress?")
     // cy.get('[type="submit"]').click();
     // cy.get('body').contains('Error: all fields are required');
-    login_form.contuctUsLogin(data.first_name,data.last_name, " ","How can I learn Cypress?",
-     "body", "Error: Invalid email address")
-
-  })
-})
+    login_form.contuctUsLogin(data.first_name, data.last_name, " ", "How can I learn Cypress?",
+      "body", "Error: Invalid email address");
+  });
+});

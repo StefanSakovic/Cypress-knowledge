@@ -1,19 +1,17 @@
 
-// U Sajpresu nam je potrebna nekad da izracunam koliko elemenata sadrzi neki element goga smo
-//dohvatili preko klase i na taj naci nacin napravimo logiku tj optimizaciju da uradi click na sve ostale projekte
-// kao sto smo objasnili u primerima ispod
+/*
+ In Cypress, we sometimes need to calculate how many elements an element of our object contains
+We can catch it through the class and in this way we create the logic, i.e. optimization  to click on all other projects
+as we explained in the examples below */
 
-
-// LOGIKA ZA LENGTH:
+// Logic for the  LENGTH:
 
 //  cy.get('.prdocutname').then(element=>{
 //     const bla = Cypress.$(element).length
 //     cy.log(bla, "NEKI TEKST");
 
 // })
-
-// Primer na sajtu automationstore.com:
-
+// Example on automationstore.com:
 
 describe("Test web-uni", () => {
 
@@ -32,7 +30,6 @@ describe("Test web-uni", () => {
                 //     cy.visit('https://automationteststore.com/');
                 // }
             });
-    })
-
+    });
 });
 

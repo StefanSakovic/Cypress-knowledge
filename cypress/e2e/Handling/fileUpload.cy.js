@@ -2,16 +2,14 @@
 
 describe("Handling file uplouds", () => {
 
-
     it("Test for uploud file", () => {
 
         cy.visit('http://www.webdriveruniversity.com');
-        cy.get('#file-upload').invoke('removeAttr', 'target').click({force:true});
+        cy.get('#file-upload').invoke('removeAttr', 'target').click({ force: true });
+        cy.fixture("laptop.png", "base64").then(fileContent => {//we locate(encode) png format with cy.fixture() (also like json.file)
 
-        cy.fixture("laptop.png", "base64").then(fileContent =>{//sa cyfixture smo locirali sliku
-
-            cy.get('#myFile').attachFile( //sa cy get smo nasli input za choose file i 
-                                        //dodelil my funkciji  attachFIle koja prima 2 objekta
+            cy.get('#myFile').attachFile( /*with cy.get() we find the input for "choose file" 
+                and chain with the function attachFile()*/
                 {
                     fileContent,
                     fileName: "laptop.png",
@@ -19,24 +17,21 @@ describe("Handling file uplouds", () => {
 
                 },
                 {
-                    uploadType : "input"// zelimo da byde upload preko inputa
+                    uploadType: "input"//we won do it vie a input
                 }
-            )
-        })
+            );
+        });
         cy.get("#submit-button").click();
-        
+
         cy.on('window:alert', (str) => {
             expect(str).to.equal('Your file has now been uploaded!');
         })
-                    //assert za  uploud file ALERT
-
+        //assert for uploud file ALERT
     })
 
     it("Test for  NO uploud file", () => {
-
         cy.visit('http://www.webdriveruniversity.com');
-        cy.get('#file-upload').invoke('removeAttr', 'target').click({force:true});
-
+        cy.get('#file-upload').invoke('removeAttr', 'target').click({ force: true });
         // cy.fixture("laptop.png", "base64").then(fileContent =>{
 
         //     cy.get('#myFile').attachFile( 
@@ -49,11 +44,14 @@ describe("Handling file uplouds", () => {
         //             uploadType : "input"
         //         }
         //     )
-        // }) // ukoliko uklonimo logiku za uploudovanje fajla onda mozemo napraviti test case ukoliko nije uploudovan fajli tj napraviti assert za no uploud file ALERT
+        // })
+
+        /* If we remove the logic for uploading the file, then we can make a test case "if no files are uploaded.
+        Also we can  make an assertion for no upload file ALERT*/
         cy.get("#submit-button").click();
         cy.on('window:alert', (str) => {
             expect(str).to.equal('You need to select a file to upload!');
-            //assert za no uploud file ALERT
-        })
-    })
+            //assert for no uploud file ALERT
+        });
+    });
 });

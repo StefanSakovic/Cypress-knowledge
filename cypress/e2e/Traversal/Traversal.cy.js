@@ -4,35 +4,31 @@
 describe("Traversing DOM elements in Cypress", () => {
     beforeEach(() => {
       cy.visit("http://webdriveruniversity.com/");
-      cy.get("#data-table").invoke("removeAttr", "target").click({ force: true });//beforeEach znaci da ce kod biti izvrsen pre svakog testa pojedinacno
-      //sto nam daje mogucnost da ne kucamo isti kod cy.visit i cy get u svakom testu pojedinacno
-    })
+      cy.get("#data-table").invoke("removeAttr", "target").click({ force: true });
+    });
+
       it("children() to get the children of DOM elements", () => {
 
-        cy.get('.traversal-breadcrumb').children('.active').click()//sa children pristupamo preko imena selektora za razliku od
-                                                                // eq() gde pristupamo elementu preko broha
-        
+        cy.get('.traversal-breadcrumb').children('.active').click();
+        //we access children via the name of the selector as opposed to eq() where we access the element via number.
       });
     
-      it("closest() to validate the closest ancestor DOM element", () => {//ancestor znaci predak sto znaci da elementu trazimo najblizeg predakat tj njegovog roditelja
-        cy.get('.traversal-badge').closest('ul').should('have.class', 'list-group')
+      it("closest() to validate the closest ancestor DOM element", () => {//ancestor means that we are looking for the element's closest ancestor, i.e. its parent
+        cy.get('.traversal-badge').closest('ul').should('have.class', 'list-group');
       });
-    
     
       it("find() to retrieve DOM elements that match a specific selector", () => {
-        cy.get('.btn-group-toggle').find('.active').should('contain', 'Button-1')  //vrat mi sve elemente sa klasom(find).find() mozemo vezivati
+        cy.get('.btn-group-toggle').find('.active').should('contain', 'Button-1');  //find me all elements with '.active' class name
       });
     
-    
       it("first() to retrieve the first DOM element within elements ", () => {
-        cy.get('.traversal-table > tbody > tr > td').first().should('contain', 'Andy')//usli smo u sve tdove kojih ima 6 i pogodili samo prvi sa first();
+        cy.get('.traversal-table > tbody > tr > td').first().should('contain', 'Andy');//we entered all tds of which there are 6 and hit only the first one with first();
       });
     
       it("last() to retrieve the last DOM element within elements", () => {
-        cy.get('.traversal-table > tbody > tr > td').last().should('contain', 'Scott')//usli smo u sve tdove kojih ima 6 i pogodili samo poslednji sa last()
+        cy.get('.traversal-table > tbody > tr > td').last().should('contain', 'Scott');//we entered all tds of which there are 6 and hit only the last one with last();
       });
     
-
       //////// SIBLING (sibling u bkv prevodu znaci brat ili sestra dok u programiranju znaci isti element pored)
 
 

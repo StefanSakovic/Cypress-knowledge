@@ -5,7 +5,7 @@ describe("Handling data-pickers on webdriver-uni", () => {
 
         cy.visit("http://webdriveruniversity.com/");
         cy.get("#datepicker").invoke("removeAttr", "target").click({ force: true });
-        //LOGIKA ZA SETOVANJA DATUMA
+        //setting date:
 
         //   let date = new Date;
         //   date.setDate(date.getDate());
@@ -16,14 +16,13 @@ describe("Handling data-pickers on webdriver-uni", () => {
 
         //   cy.log(date2.getDate())
 
-
         let date = new Date();
         date.setDate(date.getDate())
 
-        let futureYear = date.getFullYear() + 1//dodali smo jednu godinu
+        let futureYear = date.getFullYear() + 1//p.s we added one year for a reason
         cy.log(futureYear)
 
-        let futureMonth = date.toLocaleString('default', {month:"long"});//pretvaramo broj od meseca u string da bih mogli raditi logiku
+        let futureMonth = date.toLocaleString('default', { month: "long" });//we convert the month number to a string so we can do the logic
         cy.log(futureMonth)
 
         let day = date.getDate()
@@ -37,31 +36,29 @@ describe("Handling data-pickers on webdriver-uni", () => {
                 cy.log(`Now its : ${currentDate.text()}`)
                 cy.log(`Now its : ${futureMonth}`)
 
-                if (!currentDate.text().includes(futureYear)) {//uvek ide prvo lokiga za godinu
-
+                if (!currentDate.text().includes(futureYear)) {//always goes first logic for the year
                     // cy.wait(1000)
                     cy.get('.next').first().click()
                     cy.get('.input-group-addon').click()
 
                     selectMonthAndYear()
-                }
+                };
             }).then(() => {
-                 cy.get('.datepicker-dropdown').find('.datepicker-switch').first().then((currentDate) => {
+                cy.get('.datepicker-dropdown').find('.datepicker-switch').first().then((currentDate) => {
 
-                     cy.log(`Now its : ${currentDate.text()}`)
-    
-                     if (!currentDate.text().includes(futureMonth)) { //pa onda logika za mesec nas vraca na trenutan mesec i tad prestaje krug..godina ce biti veca za jednu jer smo tako dodali
-    
-                         cy.wait(3000)
-                         cy.get('.next').first().click()
-                         cy.get('.input-group-addon').click()
-    
-                         selectMonthAndYear()
-                     }
-                 })
-                
-             })
-        }
+                    cy.log(`Now its : ${currentDate.text()}`)
+
+                    if (!currentDate.text().includes(futureMonth)) { //so then the logic for the month returns us to the current month and then the circle ends.. the year will be one more because we added it
+
+                        cy.wait(2000)
+                        cy.get('.next').first().click()
+                        cy.get('.input-group-addon').click()
+
+                        selectMonthAndYear()
+                    };
+                });
+            });
+        };
         selectMonthAndYear()
     });
 });      

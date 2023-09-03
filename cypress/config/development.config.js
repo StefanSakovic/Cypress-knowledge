@@ -1,4 +1,4 @@
-//In cypress we have the possibility to create more configuration folders as you can see in the model below.
+//In cypress, we have the possibility to create more configuration folders as you can see in the model below.
 
 const { defineConfig } = require("cypress");
 
@@ -7,10 +7,10 @@ module.exports = defineConfig({
     e2e: {
         setupNodeEvents(on, config) {
         },
-     baseUrl :  "http://www.WEB.com/index.html"
+        baseUrl: "http://google.com"
     },
     env: {
-        "first_name" : "Stefan"
+        "first_name": "Stefan"
     }
 
 });
